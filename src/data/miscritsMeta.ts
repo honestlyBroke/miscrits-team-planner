@@ -132,6 +132,8 @@ export function inferTagsFromAbilities(abilities: Ability[]): Set<StatusTag> {
     else if (typeUpper === 'PARALYZE') tags.add('paralyze');
     else if (typeUpper === 'DOT') tags.add('dot');
     else if (typeUpper === 'HEAL') tags.add('hp_heal');
+    else if (typeUpper === 'NEGATE') tags.add('negate');           // ✅ NEW
+    else if (typeUpper === 'STAT_STEAL' || typeUpper === 'STATSTEAL') tags.add('stat_steal'); // ✅ NEW
     else if (typeUpper === 'BUFF') {
       // Buff can be positive or negative
       if (ability.ap !== undefined && ability.ap < 0) {
@@ -154,6 +156,9 @@ export function inferTagsFromAbilities(abilities: Ability[]): Set<StatusTag> {
       else if (addTypeUpper === 'LIFESTEAL') tags.add('hp_steal');
       else if (addTypeUpper === 'BLEED') tags.add('bleed');
       else if (addTypeUpper === 'DOT') tags.add('dot');
+      else if (addTypeUpper === 'NEGATE') tags.add('negate');                  // ✅ NEW
+      else if (addTypeUpper === 'STAT_STEAL' || addTypeUpper === 'STATSTEAL')  // ✅ NEW
+        tags.add('stat_steal');
       else if (addTypeUpper === 'BUFF') {
         if (additional.ap !== undefined && additional.ap < 0) {
           tags.add('stat_down');
@@ -179,6 +184,14 @@ export function inferTagsFromAbilities(abilities: Ability[]): Set<StatusTag> {
     }
     if (descLower.includes('chaos') || descLower.includes('stat chaos')) tags.add('chaos');
     if (descLower.includes('negate')) tags.add('negate');
+    // broaden stat steal detection:
+    if (
+      descLower.includes('stat steal') ||
+      descLower.includes('steals stats') ||
+      descLower.includes('steal stats')
+    ) {
+      tags.add('stat_steal');
+    }
     if (descLower.includes('block')) tags.add('block');
     if (descLower.includes('ethereal')) tags.add('ethereal');
     if (descLower.includes('stat steal')) tags.add('stat_steal');
