@@ -1,0 +1,107 @@
+/* Team Planner Page Layout */
+.team-planner-page {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+                    url("../../assets/other/background.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.planner-container {
+  display: flex;
+  gap: 20px;
+  max-width: 1600px;
+  margin: 0 auto;
+  flex: 1;
+  min-height: 0;
+}
+.planner-left {
+  width: 300px;
+  flex-shrink: 0;
+  overflow-y: auto;
+  background: rgba(80, 100, 120, 0.8);
+  border: 3px solid #435670;
+  border-radius: 8px;
+  border-top: 3px solid #e7ecf4;
+  border-left: 3px solid #e7ecf4;
+  border-bottom: 3px solid #3d5166;
+  border-right: 3px solid #3d5166;
+  padding: 15px;
+  max-height: calc(100vh - 100px);
+  min-height: 400px;
+}
+
+/* Middle panel - Miscrit Grid */
+.planner-middle {
+  flex: 1;
+  min-width: 400px;
+  overflow-y: auto;
+  max-height: calc(100vh - 100px);
+  min-height: 400px;
+}
+
+/* Right panel - Team View */
+.planner-right {
+  width: 350px;
+  flex-shrink: 0;
+  background: rgba(80, 100, 120, 0.8);
+  border: 3px solid #435670;
+  border-radius: 8px;
+  border-top: 3px solid #e7ecf4;
+  border-left: 3px solid #e7ecf4;
+  border-bottom: 3px solid #3d5166;
+  border-right: 3px solid #3d5166;
+  padding: 15px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  min-height: 400px;
+}
+
+/* Scrollbar styling */
+.planner-left::-webkit-scrollbar,
+.planner-middle::-webkit-scrollbar,
+.planner-right::-webkit-scrollbar {
+  width: 8px;
+}
+
+.planner-left::-webkit-scrollbar-track,
+.planner-middle::-webkit-scrollbar-track,
+.planner-right::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.planner-left::-webkit-scrollbar-thumb,
+.planner-middle::-webkit-scrollbar-thumb,
+.planner-right::-webkit-scrollbar-thumb {
+  background: rgba(200, 150, 50, 0.6);
+  border-radius: 10px;
+}
+
+.planner-left::-webkit-scrollbar-thumb:hover,
+.planner-middle::-webkit-scrollbar-thumb:hover,
+.planner-right::-webkit-scrollbar-thumb:hover {
+  background: rgba(200, 150, 50, 0.9);
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .planner-container {
+    flex-direction: column;
+  }
+
+  .planner-left,
+  .planner-middle,
+  .planner-right {
+    width: 100%;
+    max-height: none;
+    max-height: auto;
+  }
+}
