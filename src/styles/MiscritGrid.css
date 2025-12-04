@@ -101,7 +101,6 @@
 /* Card Icon */
 .card-icon {
   text-align: center;
-  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,7 +111,16 @@
   color: #b8d700;
   overflow: hidden;
   position: relative;
+  aspect-ratio: 1 / 1;
 }
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;         
+  border-radius: 2px;
+}
+
 
 .card-rarity-triangle {
   width: 35px;
